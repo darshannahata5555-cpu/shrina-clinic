@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root {
+  color-scheme: light;
+  --bg: #f6f4f1;
+  --surface: #ffffff;
+  --surface-2: #faf8f6;
+  --surface-3: #f1eeea;
+  --border: #e8e3dd;
+  --border-strong: #d6cfc7;
+  --ink: #1c1917;
+  --ink-2: #44403c;
+  --muted: #78716c;
+  --accent: #9f4a5a;
+  --accent-hover: #8a3c4b;
+  --accent-ink: #ffffff;
+  --accent-soft: #f7ebec;
+  --success: #2e7d57;
+  --success-soft: #e7f3ec;
+  --warning: #a2650f;
+  --warning-soft: #fbf1de;
+  --danger: #b42f3a;
+  --danger-soft: #fbe9ea;
+  --info: #2c6a92;
+  --info-soft: #e6f0f6;
+  --violet: #6b4fa0;
+  --violet-soft: #efeaf7;
+  --shadow: 0 1px 2px rgb(28 25 23 / 0.04), 0 1px 1px rgb(28 25 23 / 0.03);
+  --shadow-lg: 0 12px 32px -12px rgb(28 25 23 / 0.18), 0 2px 6px rgb(28 25 23 / 0.06);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #121011;
+  --surface: #1a1718;
+  --surface-2: #201c1d;
+  --surface-3: #282324;
+  --border: #2e292a;
+  --border-strong: #3d3738;
+  --ink: #f2edea;
+  --ink-2: #d6cfcb;
+  --muted: #a1978f;
+  --accent: #e0909c;
+  --accent-hover: #eba3ae;
+  --accent-ink: #1b1214;
+  --accent-soft: #3a2328;
+  --success: #6cc59a;
+  --success-soft: #1b2e25;
+  --warning: #e2b25a;
+  --warning-soft: #33291a;
+  --danger: #f0838b;
+  --danger-soft: #3a1f22;
+  --info: #7db7dd;
+  --info-soft: #1b2a35;
+  --violet: #b9a2e6;
+  --violet-soft: #2a2338;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 16px 40px -12px rgb(0 0 0 / 0.6);
+}
+
+@theme inline {
+  --font-sans: var(--font-pretendard), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --color-violet: var(--violet);
+  --color-violet-soft: var(--violet-soft);
+  --shadow-card: var(--shadow);
+  --shadow-pop: var(--shadow-lg);
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+body {
+  font-family: var(--font-sans);
+  font-feature-settings: "tnum" 0;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.005em;
+}
+
+/* Grid children may shrink below their content width, so long text or wide
+   tables (which scroll inside their own wrapper) never widen the page on phones. */
+.grid > * {
+  min-width: 0;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="datetime-local"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator,
+input[type="month"]::-webkit-calendar-picker-indicator {
+  opacity: 0.55;
+  cursor: pointer;
+}
+[data-theme="dark"] input::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+dialog::backdrop {
+  background: rgb(18 16 17 / 0.45);
+  backdrop-filter: blur(2px);
+}
+
+/* Thin scrollbars inside the app */
+.scroll-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-plain {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
